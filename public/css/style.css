@@ -1,0 +1,393 @@
+@charset "UTF-8";
+
+* {
+    font-family: serif;
+}
+
+:root {
+    --main-color: #b8860b;
+    --list-group-icon-size: 1.75em;
+    --list-group-icon-box-padding: 0.75em;
+    --list-group-icon-box-size: -webkit-calc(var(--list-group-icon-size) + (var(--list-group-icon-box-padding) * 2));
+}
+
+html {
+    overflow-y: scroll;
+}
+
+a {
+    color: black;
+}
+
+.cursor:hover {
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #c0c0c0;
+}
+
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0 auto 0;
+}
+
+.header {
+    background-color: var(--main-color);
+}
+
+.footer {
+    background-color: var(--main-color);
+    margin-top: auto;
+}
+
+.main {
+    padding-top: 1.5rem;
+    padding-bottom: 3rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#navbar-content {
+    font-size: 1.2rem;
+    --hover-color: #dcdcdc;
+}
+
+#navbar-content .nav-link {
+    position: relative;
+}
+
+#navbar-content .nav-link:hover {
+    color: var(--hover-color)
+}
+
+#navbar-content .nav-link:hover::before {
+    content: "";
+    position: absolute;
+    background-color: var(--hover-color);
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.2rem;
+}
+
+.navbar-toggler-icon {
+    background-image: url('../image/navbar-toggler.png');
+}
+
+.auth-link {
+    color: #3490dc;
+}
+
+.auth-link:hover {
+    color: #1d68a7;
+}
+
+.page-title {
+    font-weight: bold;
+    background-color: var(--main-color);
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+}
+
+.news-list {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    justify-content: space-around;
+}
+
+.news-img-box {
+  width: 135px;
+  height: 80px;
+}
+
+.news-title-box {
+  padding: 0.5rem;
+  width: -webkit-calc(100% - 135px)
+}
+
+.news-title {
+  margin-bottom: 0;
+  font-size: inherit;
+  line-height: inherit;
+  overflow: hidden;
+  height: 4rem;
+}
+
+.article-wrapper {
+    background-color: white;
+    padding-bottom: 1.5rem;
+}
+
+.article-header, .article-body {
+    padding: 1rem
+}
+
+.article-box p {
+    text-indent: 1rem;
+}
+
+.article-data-row {
+    border-top: 1px solid #dee2e6;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.article-data-title {
+    white-space: nowrap;
+}
+
+.article-data-title::after {
+    content: ':';
+}
+
+.article-data {
+    display: inline-block;
+}
+
+span.article-data + span.article-data::before {
+    content: ", ";
+}
+
+.comment {
+    border-bottom: 1px solid #dcdcdc;
+    margin-bottom: 1rem;
+}
+
+.comment-header {
+    display: flex;
+    margin-bottom: 0.1rem;
+}
+
+.comment-username::after {
+    content: "･";
+    color: #6c757d;
+}
+
+.comment-date {
+    white-space: nowrap;
+}
+
+.comment-content {
+    margin: 0;
+    white-space: pre-wrap;
+}
+
+#comment-textarea {
+    overflow-y: hidden;
+    resize: none;
+    min-height: 35px;
+    margin-bottom: 0.5rem;
+}
+
+.comment-button {
+    width: 68.41px;
+    height: 28.5px;
+}
+
+.comment-loading {
+    margin-bottom: 3px;
+}
+
+.icon-list {
+  display: flex;
+  padding: 0;
+}
+
+.icon-list span {
+    align-self: center;
+}
+
+.list-group-icon-box {
+    width: var(--list-group-icon-box-size);
+    height: var(--list-group-icon-box-size);
+    padding: var(--list-group-icon-box-padding);
+}
+
+.list-group-icon {
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: var(--list-group-icon-size);
+    height: var(--list-group-icon-size);
+}
+
+.favorite-count {
+  font-size: 1.2rem;
+  padding-left: 1rem;
+  align-self: center;
+}
+
+.favorite-list-link {
+  display: block;
+  width: 100%;
+  padding: var(--list-group-icon-box-padding) 0 var(--list-group-icon-box-padding) 1.25rem;
+}
+
+.favorite-button {
+    background-color: transparent;
+    border: none;
+}
+
+.favorite-button:focus {
+    outline: none;
+}
+
+.favorite-icon {
+  background-image: url('../image/favorite.png');
+}
+
+.favorite-icon.active {
+  background-image: url('../image/favorite_active.png');
+}
+
+.settings-icon-box {
+    margin-right: 0.25rem;
+}
+
+.competition-icon {
+    background-image: url('../image/competition.png');
+}
+
+.player-icon {
+    background-image: url('../image/player.png');
+}
+
+.history-icon {
+  background-image: url('../image/history.png');
+}
+
+.username-icon {
+    background-image: url('../image/username.png');
+}
+
+.password-icon {
+    background-image: url('../image/password.png');
+}
+
+.logout-button:focus {
+    outline: none;
+}
+
+.logout-icon {
+    background-image: url('../image/logout.png');
+}
+
+.delete-icon {
+    background-image: url('../image/delete.png');
+}
+
+.good-icon {
+    background-image: url('../image/good.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 16px;
+    height: 16px;
+
+}
+
+.good-icon.active {
+    background-image: url('../image/good_active.png');
+}
+
+.comment-footer-item {
+    font-size: 13px;
+}
+
+.settings-badge {
+    margin-left: auto;
+    margin-right: 1.25rem;
+}
+
+.overlay::after {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: 100%;
+  width: 100%;
+  height: 100%;
+  content: "";
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1999;
+}
+
+.loading {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -30%);
+  -moz-transform: translate(-50%, -30%);
+  transform: translate(-50%, -30%);
+  z-index: 2000;
+}
+
+.message {
+  color: #1d643b;
+  background-color: rgba(215, 243, 227, 0.9);
+  border: 1px solid rgba(199, 238, 216, 0.9);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  min-height: 80px;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -30%);
+  -moz-transform: translate(-50%, -30%);
+  transform: translate(-50%, -30%);
+  z-index: 2001;
+}
+
+.message-enter-active, .message-leave-active {
+    transition: opacity 0.3s;
+}
+
+.message-enter, .message-leave-to {
+    opacity: 0;
+}
+
+.message span {
+  font-size: 1.2rem;
+  align-self: center;
+}
+
+.overlay-confirm {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 3000;
+}
+
+.confirm-dialog {
+  top: 30%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -30%);
+  -moz-transform: translate(-50%, -30%);
+  transform: translate(-50%, -30%);
+}
+
+@media screen and (max-width: 767px) {
+  .dropdown-menu {
+    background-color: var(--main-color);
+    border: none;
+  }
+
+  .navbar-back-overlay::after {
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: 100%;
+      width: 100%;
+      height: 100%;
+      content: "";
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: -1;
+  }
+}
