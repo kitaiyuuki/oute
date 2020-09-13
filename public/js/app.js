@@ -3514,6 +3514,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Pagination_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/Pagination.vue */ "./resources/js/components/Pagination.vue");
 /* harmony import */ var _components_Loading_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/Loading.vue */ "./resources/js/components/Loading.vue");
+/* harmony import */ var _components_Confirm_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/Confirm.vue */ "./resources/js/components/Confirm.vue");
 //
 //
 //
@@ -3543,12 +3544,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     Pagination: _components_Pagination_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    Loading: _components_Loading_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    Loading: _components_Loading_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    Confirm: _components_Confirm_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   props: {
     page: {
@@ -3568,7 +3572,8 @@ __webpack_require__.r(__webpack_exports__);
       currentPage: 0,
       lastPage: 0,
       searchValue: '',
-      display: false
+      display: false,
+      isConfirm: false
     };
   },
   methods: {
@@ -3606,7 +3611,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     onFavorite: function onFavorite(id, is_favorite, i) {
       if (!this.$store.getters['auth/check']) {
-        alert('お気に入り機能を使うにはログインしてください。');
+        this.isConfirm = true;
         return false;
       }
 
@@ -42991,7 +42996,22 @@ var render = function() {
               }
             })
           ]
-        : [_c("Loading")]
+        : [_c("Loading")],
+      _vm._v(" "),
+      _c("Confirm", {
+        attrs: {
+          "is-alert": true,
+          title: "お気に入り機能",
+          content: "お気に入り機能を使うにはログインしてください。"
+        },
+        model: {
+          value: _vm.isConfirm,
+          callback: function($$v) {
+            _vm.isConfirm = $$v
+          },
+          expression: "isConfirm"
+        }
+      })
     ],
     2
   )
