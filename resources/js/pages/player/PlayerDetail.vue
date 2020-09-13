@@ -24,6 +24,7 @@
     <template v-else>
       <Loading></Loading>
     </template>
+    <Confirm v-model="isConfirm" :is-alert="true" title="お気に入り機能" content="お気に入り機能を使うにはログインしてください。"></Confirm>
   </div>
 </template>
 
@@ -31,12 +32,14 @@
 import News from "../../components/news/News.vue";
 import Pagination from "../../components/Pagination.vue";
 import Loading from '../../components/Loading.vue'
+import Confirm from "../../components/Confirm.vue"
 
 export default {
   components: {
     News,
     Pagination,
-    Loading
+    Loading,
+    Confirm,
   },
   props: {
     id: {
@@ -55,7 +58,8 @@ export default {
       newsList: [],
       currentPage: 0,
       lastPage: 0,
-      display: 0
+      display: 0,
+      isConfirm: false
     };
   },
   methods: {
@@ -84,7 +88,7 @@ export default {
     },
     onFavorite() {
       if (!this.$store.getters["auth/check"]) {
-        alert("お気に入り機能を使うにはログインしてください。");
+        this.isConfirm = true
         return false;
       }
       if (this.player.is_favorite) {
