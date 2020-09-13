@@ -64,10 +64,6 @@ export default {
         axios.delete('/api/competition/'+id+'/favorite')
       },
       onFavorite(id, is_favorite, i) {
-        if (!this.$store.getters['auth/check']) {
-          alert('お気に入り機能を使うにはログインしてください。')
-          return false
-        }
         if (is_favorite) {
           this.notFavorite(id, i);
         } else {

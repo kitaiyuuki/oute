@@ -3714,11 +3714,6 @@ __webpack_require__.r(__webpack_exports__);
       axios["delete"]('/api/competition/' + id + '/favorite');
     },
     onFavorite: function onFavorite(id, is_favorite, i) {
-      if (!this.$store.getters['auth/check']) {
-        alert('お気に入り機能を使うにはログインしてください。');
-        return false;
-      }
-
       if (is_favorite) {
         this.notFavorite(id, i);
       } else {
@@ -4423,11 +4418,6 @@ __webpack_require__.r(__webpack_exports__);
       axios["delete"]('/api/player/' + id + '/favorite');
     },
     onFavorite: function onFavorite(id, is_favorite, i) {
-      if (!this.$store.getters['auth/check']) {
-        alert('お気に入り機能を使うにはログインしてください。');
-        return false;
-      }
-
       if (is_favorite) {
         this.notFavorite(id, i);
       } else {
