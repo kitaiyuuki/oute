@@ -2089,6 +2089,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     value: {
@@ -41031,53 +41033,57 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.value
-    ? _c("div", { staticClass: "overlay-confirm" }, [
-        _c(
-          "div",
-          { staticClass: "card rounded-0 confirm-dialog col-8 col-lg-6" },
-          [
-            _c("div", { staticClass: "card-body" }, [
-              _c("h5", { staticClass: "card-title" }, [
-                _vm._v(_vm._s(_vm.title))
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "card-text" }, [
-                _vm._v(_vm._s(_vm.content))
-              ])
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "card-footer bg-transparent d-flex justify-content-end px-0"
-              },
-              [
-                !_vm.isAlert
-                  ? _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-secondary mr-1",
-                        attrs: { type: "button" },
-                        on: { click: _vm.onClickCancel }
-                      },
-                      [_vm._v("キャンセル")]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-primary",
-                    attrs: { type: "button" },
-                    on: { click: _vm.onClickOK }
-                  },
-                  [_vm._v("OK")]
-                )
-              ]
-            )
-          ]
-        )
+    ? _c("transition", { attrs: { name: "confirm" } }, [
+        _vm.value
+          ? _c("div", { staticClass: "overlay-confirm" }, [
+              _c(
+                "div",
+                { staticClass: "card rounded-0 confirm-dialog col-8 col-lg-6" },
+                [
+                  _c("div", { staticClass: "card-body" }, [
+                    _c("h5", { staticClass: "card-title" }, [
+                      _vm._v(_vm._s(_vm.title))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "card-text" }, [
+                      _vm._v(_vm._s(_vm.content))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "card-footer bg-transparent d-flex justify-content-end px-0"
+                    },
+                    [
+                      !_vm.isAlert
+                        ? _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-secondary mr-1",
+                              attrs: { type: "button" },
+                              on: { click: _vm.onClickCancel }
+                            },
+                            [_vm._v("キャンセル")]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { type: "button" },
+                          on: { click: _vm.onClickOK }
+                        },
+                        [_vm._v("OK")]
+                      )
+                    ]
+                  )
+                ]
+              )
+            ])
+          : _vm._e()
       ])
     : _vm._e()
 }
