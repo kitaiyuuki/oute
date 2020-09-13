@@ -2111,11 +2111,6 @@ __webpack_require__.r(__webpack_exports__);
       "default": false
     }
   },
-  data: function data() {
-    return {
-      display: true
-    };
-  },
   methods: {
     onClickOK: function onClickOK() {
       this.$emit('confirm', true);
@@ -66337,7 +66332,7 @@ __webpack_require__.r(__webpack_exports__);
       state.content = value;
       setTimeout(function () {
         return state.content = '';
-      }, 4000);
+      }, 3000);
     }
   }
 });

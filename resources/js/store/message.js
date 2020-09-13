@@ -6,7 +6,7 @@ export default {
     mutations: {
         setContent(state, value) {
             state.content = value
-            setTimeout(() => (state.content = ''), 4000)
+            setTimeout(() => (state.content = ''), 3000)
         }
     }
 }

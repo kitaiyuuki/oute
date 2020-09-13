@@ -36,16 +36,10 @@ export default {
             default: false
         }
     },
-    data() {
-        return {
-            display: true
-        }
-    },
     methods: {
         onClickOK() {
             this.$emit('confirm', true)
             this.$emit('input', false)
-
         },
         onClickCancel(){
             this.$emit('confirm', false)

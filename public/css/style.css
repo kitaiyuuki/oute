@@ -363,7 +363,6 @@ span.article-data + span.article-data::before {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 3000;
-  transition-delay: 0.5s;
 }
 
 .confirm-dialog {
@@ -374,6 +373,16 @@ span.article-data + span.article-data::before {
   transform: translate(-50%, -30%);
 }
 
+.confirm-enter-active,
+.confirm-leave-active {
+  transition: width 0.4s;
+}
+
+.confirm-enter,
+.confirm-leave-to {
+  width: 100%
+}
+
 .confirm-enter-active .confirm-dialog,
 .confirm-leave-active .confirm-dialog {
   transition: opacity 0.3s;
@@ -381,7 +390,7 @@ span.article-data + span.article-data::before {
 
 .confirm-enter .confirm-dialog,
 .confirm-leave-to .confirm-dialog {
-  opacity: 0;
+  opacity: 0
 }
 
 @media screen and (max-width: 767px) {
