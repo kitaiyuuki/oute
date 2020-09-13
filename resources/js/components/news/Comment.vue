@@ -1,5 +1,5 @@
 <template>
-  <div class="comment" v-if="display">
+  <div v-if="display" class="comment">
     <div class="comment-header">
       <small class="comment-username text-truncate text-muted">{{ item.author.name }}</small>
       <small class="comment-date text-muted">{{ item.date }}</small>
@@ -40,7 +40,7 @@ export default {
     },
     deleteComment(isDelete) {
       if (isDelete) {
-        this.display = false
+        setTimeout(() => (this.display = false), 400)
         axios.delete('/api/news/comment/'+this.item.id)
       }
     },
