@@ -6,7 +6,7 @@
                 <p class="card-text">{{ content }}</p>
             </div>
             <div class="card-footer bg-transparent d-flex justify-content-end px-0">
-                <button @click="onClickCancel" type="button" class="btn btn-secondary mr-1">キャンセル</button>
+                <button v-if="!isAlert" @click="onClickCancel" type="button" class="btn btn-secondary mr-1">キャンセル</button>
                 <button @click="onClickOK" type="button" class="btn btn-primary">OK</button>
             </div>
         </div>
@@ -27,6 +27,11 @@ export default {
         content: {
             required: true,
             type: String
+        },
+        isAlert: {
+            required: false,
+            type: Boolean,
+            default: false
         }
     },
     data() {

@@ -2102,6 +2102,11 @@ __webpack_require__.r(__webpack_exports__);
     content: {
       required: true,
       type: String
+    },
+    isAlert: {
+      required: false,
+      type: Boolean,
+      "default": false
     }
   },
   data: function data() {
@@ -41026,15 +41031,17 @@ var render = function() {
                   "card-footer bg-transparent d-flex justify-content-end px-0"
               },
               [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-secondary mr-1",
-                    attrs: { type: "button" },
-                    on: { click: _vm.onClickCancel }
-                  },
-                  [_vm._v("キャンセル")]
-                ),
+                !_vm.isAlert
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-secondary mr-1",
+                        attrs: { type: "button" },
+                        on: { click: _vm.onClickCancel }
+                      },
+                      [_vm._v("キャンセル")]
+                    )
+                  : _vm._e(),
                 _vm._v(" "),
                 _c(
                   "button",
