@@ -22,6 +22,7 @@ Route::get('/news/attention', 'NewsController@attention')->name('news.attention'
 Route::get('/news/history', 'NewsController@history')->middleware('auth')->name('news.history');
 Route::get('/news/player/{playerId}', 'NewsController@player')->name('news.player');
 Route::get('/news/competition/{competitionId}', 'NewsController@competition')->name('news.competition');
+Route::get('/news/article/{id}', 'NewsController@article')->name('news.article');
 Route::post('/news/comment/{commentId}/favorite', 'NewsController@commentFavorite')->middleware('auth')->name('news.commentFavorite');
 Route::post('/news/comment/{id}', 'NewsController@comment')->middleware('auth')->name('news.comment');
 Route::delete('/news/comment/{commentId}/favorite', 'NewsController@commentNotFavorite')->middleware('auth')->name('news.commentNotFavorite');

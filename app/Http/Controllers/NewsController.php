@@ -10,6 +10,7 @@ use App\Comment;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CommentFormRequest;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class NewsController extends Controller
 {
@@ -75,6 +76,11 @@ class NewsController extends Controller
         }
 
         return $competition->news()->orderBy('created_at', 'desc')->paginate();
+    }
+
+    public function article($id) {
+
+        return Storage::disk('public')->get('news/article/' . $id . '.html');
     }
 
     public function comment($id, CommentFormRequest $request) {

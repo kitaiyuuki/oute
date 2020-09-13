@@ -1,50 +1,6 @@
 /******/ (function(modules) { // webpackBootstrap
-/******/ 	// install a JSONP callback for chunk loading
-/******/ 	function webpackJsonpCallback(data) {
-/******/ 		var chunkIds = data[0];
-/******/ 		var moreModules = data[1];
-/******/
-/******/
-/******/ 		// add "moreModules" to the modules object,
-/******/ 		// then flag all "chunkIds" as loaded and fire callback
-/******/ 		var moduleId, chunkId, i = 0, resolves = [];
-/******/ 		for(;i < chunkIds.length; i++) {
-/******/ 			chunkId = chunkIds[i];
-/******/ 			if(Object.prototype.hasOwnProperty.call(installedChunks, chunkId) && installedChunks[chunkId]) {
-/******/ 				resolves.push(installedChunks[chunkId][0]);
-/******/ 			}
-/******/ 			installedChunks[chunkId] = 0;
-/******/ 		}
-/******/ 		for(moduleId in moreModules) {
-/******/ 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
-/******/ 				modules[moduleId] = moreModules[moduleId];
-/******/ 			}
-/******/ 		}
-/******/ 		if(parentJsonpFunction) parentJsonpFunction(data);
-/******/
-/******/ 		while(resolves.length) {
-/******/ 			resolves.shift()();
-/******/ 		}
-/******/
-/******/ 	};
-/******/
-/******/
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-/******/
-/******/ 	// object to store loaded and loading chunks
-/******/ 	// undefined = chunk not loaded, null = chunk preloaded/prefetched
-/******/ 	// Promise = chunk loading, 0 = chunk loaded
-/******/ 	var installedChunks = {
-/******/ 		"/js/app": 0
-/******/ 	};
-/******/
-/******/
-/******/
-/******/ 	// script path function
-/******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({}[chunkId]||chunkId) + ".js"
-/******/ 	}
 /******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
@@ -70,67 +26,6 @@
 /******/ 		return module.exports;
 /******/ 	}
 /******/
-/******/ 	// This file contains only the entry chunk.
-/******/ 	// The chunk loading function for additional chunks
-/******/ 	__webpack_require__.e = function requireEnsure(chunkId) {
-/******/ 		var promises = [];
-/******/
-/******/
-/******/ 		// JSONP chunk loading for javascript
-/******/
-/******/ 		var installedChunkData = installedChunks[chunkId];
-/******/ 		if(installedChunkData !== 0) { // 0 means "already installed".
-/******/
-/******/ 			// a Promise means "currently loading".
-/******/ 			if(installedChunkData) {
-/******/ 				promises.push(installedChunkData[2]);
-/******/ 			} else {
-/******/ 				// setup Promise in chunk cache
-/******/ 				var promise = new Promise(function(resolve, reject) {
-/******/ 					installedChunkData = installedChunks[chunkId] = [resolve, reject];
-/******/ 				});
-/******/ 				promises.push(installedChunkData[2] = promise);
-/******/
-/******/ 				// start chunk loading
-/******/ 				var script = document.createElement('script');
-/******/ 				var onScriptComplete;
-/******/
-/******/ 				script.charset = 'utf-8';
-/******/ 				script.timeout = 120;
-/******/ 				if (__webpack_require__.nc) {
-/******/ 					script.setAttribute("nonce", __webpack_require__.nc);
-/******/ 				}
-/******/ 				script.src = jsonpScriptSrc(chunkId);
-/******/
-/******/ 				// create error before stack unwound to get useful stacktrace later
-/******/ 				var error = new Error();
-/******/ 				onScriptComplete = function (event) {
-/******/ 					// avoid mem leaks in IE.
-/******/ 					script.onerror = script.onload = null;
-/******/ 					clearTimeout(timeout);
-/******/ 					var chunk = installedChunks[chunkId];
-/******/ 					if(chunk !== 0) {
-/******/ 						if(chunk) {
-/******/ 							var errorType = event && (event.type === 'load' ? 'missing' : event.type);
-/******/ 							var realSrc = event && event.target && event.target.src;
-/******/ 							error.message = 'Loading chunk ' + chunkId + ' failed.\n(' + errorType + ': ' + realSrc + ')';
-/******/ 							error.name = 'ChunkLoadError';
-/******/ 							error.type = errorType;
-/******/ 							error.request = realSrc;
-/******/ 							chunk[1](error);
-/******/ 						}
-/******/ 						installedChunks[chunkId] = undefined;
-/******/ 					}
-/******/ 				};
-/******/ 				var timeout = setTimeout(function(){
-/******/ 					onScriptComplete({ type: 'timeout', target: script });
-/******/ 				}, 120000);
-/******/ 				script.onerror = script.onload = onScriptComplete;
-/******/ 				document.head.appendChild(script);
-/******/ 			}
-/******/ 		}
-/******/ 		return Promise.all(promises);
-/******/ 	};
 /******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
@@ -183,16 +78,6 @@
 /******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "/";
-/******/
-/******/ 	// on error function for async loading
-/******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
-/******/
-/******/ 	var jsonpArray = window["webpackJsonp"] = window["webpackJsonp"] || [];
-/******/ 	var oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
-/******/ 	jsonpArray.push = webpackJsonpCallback;
-/******/ 	jsonpArray = jsonpArray.slice();
-/******/ 	for(var i = 0; i < jsonpArray.length; i++) webpackJsonpCallback(jsonpArray[i]);
-/******/ 	var parentJsonpFunction = oldJsonpFunction;
 /******/
 /******/
 /******/ 	// Load entry module and return exports
@@ -2633,8 +2518,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Loading_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Loading.vue */ "./resources/js/components/Loading.vue");
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2665,17 +2554,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    Loading: _Loading_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   props: {
     news: {
       required: true,
       type: Object
     }
   },
+  data: function data() {
+    return {
+      article: ''
+    };
+  },
   created: function created() {
     var _this = this;
 
-    vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('NewsArticle', function () {
-      return __webpack_require__("./resources/js/components/news/article lazy recursive ^\\.\\/.*$")("./" + _this.news.id);
+    axios.get('/api/news/article/' + this.news.id).then(function (res) {
+      _this.article = res.data;
     });
   }
 });
@@ -41793,7 +41690,16 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "mb-2 article-box" }, [_c("NewsArticle")], 1),
+    _c(
+      "div",
+      { staticClass: "mb-2 article-box" },
+      [
+        _vm.article
+          ? [_c("div", { domProps: { innerHTML: _vm._s(_vm.article) } })]
+          : [_c("Loading")]
+      ],
+      2
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "row article-data-row" }, [
       _vm._m(0),
@@ -64576,237 +64482,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NewsContent_vue_vue_type_template_id_0440d215___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
-
-/***/ }),
-
-/***/ "./resources/js/components/news/article lazy recursive ^\\.\\/.*$":
-/*!*****************************************************************************!*\
-  !*** ./resources/js/components/news/article lazy ^\.\/.*$ namespace object ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"./1": [
-		"./resources/js/components/news/article/1.vue",
-		0
-	],
-	"./1.vue": [
-		"./resources/js/components/news/article/1.vue",
-		0
-	],
-	"./10": [
-		"./resources/js/components/news/article/10.vue",
-		1
-	],
-	"./10.vue": [
-		"./resources/js/components/news/article/10.vue",
-		1
-	],
-	"./11": [
-		"./resources/js/components/news/article/11.vue",
-		2
-	],
-	"./11.vue": [
-		"./resources/js/components/news/article/11.vue",
-		2
-	],
-	"./12": [
-		"./resources/js/components/news/article/12.vue",
-		3
-	],
-	"./12.vue": [
-		"./resources/js/components/news/article/12.vue",
-		3
-	],
-	"./13": [
-		"./resources/js/components/news/article/13.vue",
-		4
-	],
-	"./13.vue": [
-		"./resources/js/components/news/article/13.vue",
-		4
-	],
-	"./14": [
-		"./resources/js/components/news/article/14.vue",
-		5
-	],
-	"./14.vue": [
-		"./resources/js/components/news/article/14.vue",
-		5
-	],
-	"./15": [
-		"./resources/js/components/news/article/15.vue",
-		6
-	],
-	"./15.vue": [
-		"./resources/js/components/news/article/15.vue",
-		6
-	],
-	"./16": [
-		"./resources/js/components/news/article/16.vue",
-		7
-	],
-	"./16.vue": [
-		"./resources/js/components/news/article/16.vue",
-		7
-	],
-	"./17": [
-		"./resources/js/components/news/article/17.vue",
-		8
-	],
-	"./17.vue": [
-		"./resources/js/components/news/article/17.vue",
-		8
-	],
-	"./18": [
-		"./resources/js/components/news/article/18.vue",
-		9
-	],
-	"./18.vue": [
-		"./resources/js/components/news/article/18.vue",
-		9
-	],
-	"./19": [
-		"./resources/js/components/news/article/19.vue",
-		10
-	],
-	"./19.vue": [
-		"./resources/js/components/news/article/19.vue",
-		10
-	],
-	"./2": [
-		"./resources/js/components/news/article/2.vue",
-		11
-	],
-	"./2.vue": [
-		"./resources/js/components/news/article/2.vue",
-		11
-	],
-	"./20": [
-		"./resources/js/components/news/article/20.vue",
-		12
-	],
-	"./20.vue": [
-		"./resources/js/components/news/article/20.vue",
-		12
-	],
-	"./21": [
-		"./resources/js/components/news/article/21.vue",
-		13
-	],
-	"./21.vue": [
-		"./resources/js/components/news/article/21.vue",
-		13
-	],
-	"./22": [
-		"./resources/js/components/news/article/22.vue",
-		14
-	],
-	"./22.vue": [
-		"./resources/js/components/news/article/22.vue",
-		14
-	],
-	"./23": [
-		"./resources/js/components/news/article/23.vue",
-		15
-	],
-	"./23.vue": [
-		"./resources/js/components/news/article/23.vue",
-		15
-	],
-	"./24": [
-		"./resources/js/components/news/article/24.vue",
-		16
-	],
-	"./24.vue": [
-		"./resources/js/components/news/article/24.vue",
-		16
-	],
-	"./25": [
-		"./resources/js/components/news/article/25.vue",
-		17
-	],
-	"./25.vue": [
-		"./resources/js/components/news/article/25.vue",
-		17
-	],
-	"./3": [
-		"./resources/js/components/news/article/3.vue",
-		18
-	],
-	"./3.vue": [
-		"./resources/js/components/news/article/3.vue",
-		18
-	],
-	"./4": [
-		"./resources/js/components/news/article/4.vue",
-		19
-	],
-	"./4.vue": [
-		"./resources/js/components/news/article/4.vue",
-		19
-	],
-	"./5": [
-		"./resources/js/components/news/article/5.vue",
-		20
-	],
-	"./5.vue": [
-		"./resources/js/components/news/article/5.vue",
-		20
-	],
-	"./6": [
-		"./resources/js/components/news/article/6.vue",
-		21
-	],
-	"./6.vue": [
-		"./resources/js/components/news/article/6.vue",
-		21
-	],
-	"./7": [
-		"./resources/js/components/news/article/7.vue",
-		22
-	],
-	"./7.vue": [
-		"./resources/js/components/news/article/7.vue",
-		22
-	],
-	"./8": [
-		"./resources/js/components/news/article/8.vue",
-		23
-	],
-	"./8.vue": [
-		"./resources/js/components/news/article/8.vue",
-		23
-	],
-	"./9": [
-		"./resources/js/components/news/article/9.vue",
-		24
-	],
-	"./9.vue": [
-		"./resources/js/components/news/article/9.vue",
-		24
-	]
-};
-function webpackAsyncContext(req) {
-	if(!__webpack_require__.o(map, req)) {
-		return Promise.resolve().then(function() {
-			var e = new Error("Cannot find module '" + req + "'");
-			e.code = 'MODULE_NOT_FOUND';
-			throw e;
-		});
-	}
-
-	var ids = map[req], id = ids[0];
-	return __webpack_require__.e(ids[1]).then(function() {
-		return __webpack_require__(id);
-	});
-}
-webpackAsyncContext.keys = function webpackAsyncContextKeys() {
-	return Object.keys(map);
-};
-webpackAsyncContext.id = "./resources/js/components/news/article lazy recursive ^\\.\\/.*$";
-module.exports = webpackAsyncContext;
 
 /***/ }),
 

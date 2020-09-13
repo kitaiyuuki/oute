@@ -1,7 +1,12 @@
 <template>
   <div>
     <div class="mb-2 article-box">
-      <NewsArticle></NewsArticle>
+      <template v-if="article">
+        <div v-html="article"></div>
+      </template>
+      <template v-else>
+        <Loading></Loading>
+      </template>
     </div>
     <div class="row article-data-row">
       <div class="col-2">
@@ -27,17 +32,28 @@
 </template>
 
 <script>
-import Vue from 'vue'
+import Loading from '../Loading.vue'
 
 export default {
+  components: {
+    Loading
+  },
   props: {
     news: {
       required: true,
       type: Object,
     },
   },
+  data() {
+    return {
+      article: ''
+    }
+  },
   created() {
-    Vue.component('NewsArticle', () => import('./article/' + this.news.id))
+    axios.get('/api/news/article/' + this.news.id)
+      .then(res => {
+        this.article = res.data
+      })
   }
 
 };

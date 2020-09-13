@@ -49,7 +49,6 @@ class News extends Model
     }
 
     public function getUrlAttribute() {
-        return Storage::disk('public')->url('news/' . $this->id . '.jpg');
+        return Storage::disk('public')->url('news/head_image/' . $this->id . '.jpg');
     }
-
 }
