@@ -30,8 +30,19 @@ Laravel、Vue.js、bootstrap
 ## 開発予定
 
 -コメント返信機能<br>
--コメント入力欄修正<br>
 -ユーザーのプロフィール画像機能<br>
 -対局日程機能<br>
 -コードの部品化<br>
 -admin用ページの追加<br>
+
+## 環境構築
+
+1. .envファイル作成<br>
+2. composer install<br>
+3. npm install<br>
+4. php artisan storage:link<br>
+5. データベース作成<br>
+6. php artisan migrate<br>
+7. php artisan db:seed<br>
+8. npm run dev
+9. php artisan serve
