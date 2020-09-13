@@ -2370,6 +2370,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2384,7 +2385,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       display: true,
-      isConfirm: false
+      isConfirm: false,
+      isAlert: false
     };
   },
   methods: {
@@ -2409,7 +2411,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     onFavorite: function onFavorite() {
       if (!this.$store.getters["auth/check"]) {
-        alert("いいね機能を使うにはログインしてください。");
+        this.isAlert = true;
         return false;
       }
 
@@ -41559,6 +41561,21 @@ var render = function() {
                 _vm.isConfirm = $$v
               },
               expression: "isConfirm"
+            }
+          }),
+          _vm._v(" "),
+          _c("Confirm", {
+            attrs: {
+              "is-alert": true,
+              title: "いいね機能",
+              content: "いいね機能を使うにはログインしてください。"
+            },
+            model: {
+              value: _vm.isAlert,
+              callback: function($$v) {
+                _vm.isAlert = $$v
+              },
+              expression: "isAlert"
             }
           })
         ],

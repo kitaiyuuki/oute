@@ -11,6 +11,7 @@
       <span v-if="item.is_mine" @click="confirmShow" class="cursor comment-footer-item align-self-center text-danger">削除</span>
     </div>
     <Confirm v-model="isConfirm" @confirm="deleteComment" title="コメントの削除" content="コメントを削除しますか？"></Confirm>
+    <Confirm v-model="isAlert" :is-alert="true" title="いいね機能" content="いいね機能を使うにはログインしてください。"></Confirm>
   </div>
 </template>
 
@@ -29,7 +30,8 @@ export default {
   data() {
     return {
       display: true,
-      isConfirm: false
+      isConfirm: false,
+      isAlert: false,
     }
   },
   methods: {
@@ -54,7 +56,7 @@ export default {
     },
     onFavorite() {
       if (!this.$store.getters["auth/check"]) {
-        alert("いいね機能を使うにはログインしてください。");
+        this.isAlert = true
         return false;
       }
       if (this.item.is_favorite) {
