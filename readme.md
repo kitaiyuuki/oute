@@ -35,7 +35,7 @@ Laravel、Vue.js、bootstrap
 -コードの部品化<br>
 -admin用ページの追加<br>
 
-## 環境構築
+## 設定
 
 1. .envファイル作成<br>
 2. composer install<br>
