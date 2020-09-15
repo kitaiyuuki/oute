@@ -1,15 +1,7 @@
 <template>
   <div class="container">
     <h2 class="page-title">大会</h2>
-    <form @submit.prevent="onSearch" class="mb-3">
-      <div class="input-group mb-3">
-        <input type="text" v-model="searchValue" class="form-control" placeholder="大会を検索"/>
-        <div class="input-group-append">
-          <button :disabled="!searchValue" type="submit" class="btn btn-secondary">検索</button>
-        </div>
-      </div>
-    </form>
-    <div v-if="search" class="text-center mb-3">「{{ search }}」を検索</div>
+    <Search :search="search" placeholder-text="大会を検索" @search="onSearch"></Search>
     <template v-if="display">
       <ul class="list-group">
         <li v-for="(competition, i) in competitionList" :key="competition.id" class="list-group-item rounded-0 icon-list">
@@ -30,12 +22,14 @@
 
 <script>
 import Pagination from '../../components/Pagination.vue'
+import Search from '../../components/Search.vue'
 import Loading from '../../components/Loading.vue'
 import Confirm from '../../components/Confirm.vue'
 
 export default {
     components: {
         Pagination,
+        Search,
         Loading,
         Confirm
     },
@@ -56,7 +50,6 @@ export default {
         competitionList: [],
         currentPage: 0,
         lastPage: 0,
-        searchValue: '',
         display: false,
         isConfirm: false
       }
@@ -72,14 +65,11 @@ export default {
             this.display = true
         })
       },
-      onSearch() {
-        if (!this.searchValue) {
-          return false
+      onSearch(searchValue) {
+        if (searchValue === this.search && this.page === 1) {
+          return false;
         }
-        if (this.searchValue === this.search && this.page === 1) {
-          return false
-        }
-        this.$router.push('/competition?search='+this.searchValue)
+        this.$router.push('/competition?search='+searchValue)
       },
       favorite(id, i) {
         this.competitionList[i].is_favorite = true
