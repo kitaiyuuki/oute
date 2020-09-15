@@ -37,11 +37,11 @@ Laravel、Vue.js、bootstrap
 
 ## 設定
 
-1. .envファイル作成<br>
+1. .envファイル作成（env.exampleに例を記述しておきました。）<br>
 2. composer install<br>
 3. npm install<br>
 4. php artisan storage:link<br>
-5. データベース作成<br>
+5. データベース作成（MySQL以外のデータベースではmigrationが通らない可能性があります。）<br>
 6. php artisan migrate<br>
 7. php artisan db:seed<br>
 8. npm run dev
