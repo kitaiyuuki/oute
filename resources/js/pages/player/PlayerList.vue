@@ -3,25 +3,7 @@
     <h2 class="page-title">棋士</h2>
     <Search :search="search" placeholder-text="棋士を検索" @search="onSearch"></Search>
     <template v-if="display">
-      <ul class="list-group">
-        <li
-          v-for="(player, i) in playerList"
-          :key="player.id"
-          class="list-group-item rounded-0 icon-list"
-        >
-          <router-link
-            :to="'/player/'+player.id"
-            class="text-truncate favorite-list-link"
-          >{{ player.name }}</router-link>
-          <button
-            type="button"
-            @click="onFavorite(player.id, player.is_favorite, i)"
-            class="list-group-icon-box favorite-button"
-          >
-            <span :class="{'active': player.is_favorite}" class="list-group-icon favorite-icon"></span>
-          </button>
-        </li>
-      </ul>
+      <PlayerChart :player-list="playerList" @onFavorite="onFavorite"></PlayerChart>
       <Pagination
         :current-page="currentPage"
         :last-page="lastPage"
@@ -31,22 +13,21 @@
     <template v-else>
       <Loading></Loading>
     </template>
-    <Confirm v-model="isConfirm" :is-alert="true" title="お気に入り機能" content="お気に入り機能を使うにはログインしてください。"></Confirm>
   </div>
 </template>
 
 <script>
 import Pagination from "../../components/Pagination.vue";
 import Search from "../../components/Search.vue";
+import PlayerChart from "../../components/player/PlayerChart.vue"
 import Loading from "../../components/Loading.vue";
-import Confirm from "../../components/Confirm.vue";
 
 export default {
   components: {
     Pagination,
     Search,
-    Loading,
-    Confirm,
+    PlayerChart,
+    Loading
   },
   props: {
     page: {
@@ -66,7 +47,6 @@ export default {
       currentPage: 0,
       lastPage: 0,
       display: false,
-      isConfirm: false,
     };
   },
   methods: {
@@ -87,27 +67,9 @@ export default {
       }
       this.$router.push("/player?search=" + searchValue);
     },
-    favorite(id, i) {
-      this.playerList[i].is_favorite = true;
-      this.playerList[i].favorite_count += 1;
-      axios.post("/api/player/" + id + "/favorite");
-    },
-    notFavorite(id, i) {
-      this.playerList[i].is_favorite = false;
-      this.playerList[i].favorite_count -= 1;
-      axios.delete("/api/player/" + id + "/favorite");
-    },
-    onFavorite(id, is_favorite, i) {
-      if (!this.$store.getters["auth/check"]) {
-        this.isConfirm = true;
-        return false;
-      }
-      if (is_favorite) {
-        this.notFavorite(id, i);
-      } else {
-        this.favorite(id, i);
-      }
-    },
+    onFavorite(value) {
+      this.playerList = value
+    }
   },
   watch: {
     $route: {
