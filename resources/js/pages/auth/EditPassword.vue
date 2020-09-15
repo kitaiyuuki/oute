@@ -1,8 +1,6 @@
 <template>
   <AuthCard title="パスワード変更">
-    <div class="mb-2">
-      <p class="lead text-truncate text-center font-weight-bold mb-0">{{ username }}</p>
-    </div>
+    <UserData></UserData>
     <form @submit.prevent="edit">
       <div class="form-group">
         <label for="password">現在のパスワード</label>
@@ -46,12 +44,14 @@
 
 <script>
 import AuthCard from "../../components/auth/AuthCard.vue";
+import UserData from '../../components/auth/UserData.vue'
 import Loading from "../../components/LodingWide.vue";
 import { OK, UNPROCESSABLE_ENTITY } from "../../util";
 export default {
   components: {
     AuthCard,
-    Loading,
+    UserData,
+    Loading
   },
   data() {
     return {
@@ -68,9 +68,6 @@ export default {
     };
   },
   computed: {
-    username() {
-      return this.$store.getters["auth/username"];
-    },
     canEdit() {
       return (
         this.editForm.password &&

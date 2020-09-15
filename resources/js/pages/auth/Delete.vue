@@ -1,11 +1,6 @@
 <template>
   <AuthCard title="アカウント削除">
-    <div class="mb-2">
-      <p class="lead text-truncate text-center font-weight-bold mb-0">{{ username }}</p>
-    </div>
-    <div class="mb-2">
-      <p class="lead text-truncate text-center font-weight-bold mb-0">{{ email }}</p>
-    </div>
+    <UserData></UserData>
     <button
       type="button"
       @click="confirmShow"
@@ -21,28 +16,22 @@
 
 <script>
 import AuthCard from "../../components/auth/AuthCard.vue";
+import UserData from '../../components/auth/UserData.vue'
 import Loading from "../../components/LodingWide.vue";
 import Confirm from "../../components/Confirm.vue";
 import { OK } from "../../util";
 export default {
   components: {
     AuthCard,
+    UserData,
     Loading,
-    Confirm,
+    Confirm
   },
   data() {
     return {
       deleteButtonDisabled: false,
       isConfirm: false,
     };
-  },
-  computed: {
-    username() {
-      return this.$store.getters["auth/username"];
-    },
-    email() {
-      return this.$store.getters["auth/email"];
-    },
   },
   methods: {
     confirmShow() {
