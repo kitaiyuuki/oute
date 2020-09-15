@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import News from "../../components/news/News.vue"
 import NewsListTab from '../../components/news/NewsListTab.vue'
 import NewsChart from '../../components/news/NewsChart.vue'
 import Pagination from "../../components/Pagination.vue"
@@ -21,7 +20,6 @@ import Loading from '../../components/Loading.vue'
 
 export default {
   components: {
-    News,
     NewsListTab,
     NewsChart,
     Pagination,

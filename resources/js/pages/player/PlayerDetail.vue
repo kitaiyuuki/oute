@@ -12,13 +12,7 @@
         <button type="button" class="btn btn-outline-dark rounded-0 active">ニュース</button>
         <button type="button" class="btn btn-outline-dark rounded-0">対局日程</button>
       </div>
-      <div v-if="newsList">
-        <div class="row">
-          <div v-for="news in newsList" :key="news.id" class="col-md-6">
-            <News :item="news"></News>
-          </div>
-        </div>
-      </div>
+      <NewsChart :newsList="newsList"></NewsChart>
       <Pagination :current-page="currentPage" :last-page="lastPage" :path="$route.path+'?'"></Pagination>
     </template>
     <template v-else>
@@ -29,14 +23,14 @@
 </template>
 
 <script>
-import News from "../../components/news/News.vue";
+import NewsChart from '../../components/news/NewsChart.vue'
 import Pagination from "../../components/Pagination.vue";
 import Loading from '../../components/Loading.vue'
 import Confirm from "../../components/Confirm.vue"
 
 export default {
   components: {
-    News,
+    NewsChart,
     Pagination,
     Loading,
     Confirm,
