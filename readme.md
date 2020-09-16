@@ -29,12 +29,9 @@
 
 Laravel、Vue.js、bootstrap
 
-## 開発予定
+## 未実装
 
--コメント返信機能<br>
--ユーザーのプロフィール画像機能<br>
--対局日程機能<br>
--admin用ページの追加<br>
+-対局日程
 
 ## git clone後の設定
 
