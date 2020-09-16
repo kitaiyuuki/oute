@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
@@ -26,11 +27,11 @@ class User extends Authenticatable
     protected $dates = ['delete_at'];
 
     protected $visible = [
-        'name', 'email', 'player_count', 'competition_count'
+        'name', 'email', 'player_count', 'competition_count', 'url'
     ];
 
     protected $appends = [
-        'player_count', 'competition_count'
+        'player_count', 'competition_count', 'url'
     ];
 
     public static $rules = [
@@ -58,6 +59,10 @@ class User extends Authenticatable
 
     public function histories() {
         return $this->belongsToMany('App\News', 'histories');
+    }
+
+    public function getUrlAttribute() {
+        return Storage::disk('public')->url('user/image/' . $this->image_url);
     }
 
     public function getPlayerCountAttribute() {

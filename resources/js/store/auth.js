@@ -8,7 +8,8 @@ export default {
     getters: {
         check: state => !!state.user,
         username: state => state.user ? state.user.name : '',
-        email: state => state.user ? state.user.email : ''
+        email: state => state.user ? state.user.email : '',
+        userimage: state => state.user ? state.user.url : ''
     },
     mutations: {
         setUser(state, user) {

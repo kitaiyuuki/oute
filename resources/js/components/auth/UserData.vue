@@ -1,10 +1,13 @@
 <template>
-  <div>
-    <div class="mb-2">
-      <p class="lead text-truncate text-center font-weight-bold mb-0">{{ username }}</p>
-    </div>
-    <div class="mb-2">
-      <p class="lead text-truncate text-center font-weight-bold mb-0">{{ email }}</p>
+  <div class="media">
+    <img :src="userimage" class="user-image mr-4" alt="ユーザー">
+    <div class="media-body userdata-body">
+      <div class="mb-2">
+        <p class="font-weight-bold mb-0">{{ username }}</p>
+      </div>
+      <div class="mb-2">
+        <p class="font-weight-bold mb-0">{{ email }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -18,6 +21,9 @@ export default {
     email() {
       return this.$store.getters["auth/email"];
     },
+    userimage() {
+      return this.$store.getters['auth/userimage']
+    }
   },
 }
 </script>
