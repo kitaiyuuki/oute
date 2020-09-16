@@ -98,6 +98,7 @@ export default {
       const res = await axios.post("/api/register", this.registerForm);
       if (res.status === CREATED) {
         this.$store.commit("auth/setUser", res.data);
+        console.log(res.data)
         this.$store.commit("message/setContent", "登録に成功しました。");
         this.$router.push("/");
       } else if (res.status === UNPROCESSABLE_ENTITY) {

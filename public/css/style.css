@@ -280,6 +280,10 @@ span.article-data+span.article-data::before {
   background-image: url('../image/username.png');
 }
 
+.userimage-icon {
+  background-image: url('../image/userimage.png');
+}
+
 .password-icon {
   background-image: url('../image/password.png');
 }
@@ -417,6 +421,24 @@ span.article-data+span.article-data::before {
 
 .userdata-body {
   max-width: -webkit-calc(100% - 40px - 1.5rem)
+}
+
+.custom-file-input:lang(ja)~.custom-file-label::after {
+  content: "参照";
+}
+
+.preview-output {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.preview-img {
+  display: block;
+  width: 66px;
+  height: 66px;
+  margin-right: auto;
+  margin-left: auto;
+  border: 1px solid #000000;
 }
 
 @media screen and (max-width: 767px) {

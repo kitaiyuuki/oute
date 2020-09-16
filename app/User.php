@@ -72,4 +72,23 @@ class User extends Authenticatable
     public function getCompetitionCountAttribute() {
         return $this->competitions->count();
     }
+
+    public static function getRandomImageName() {
+
+        $nameLength = 12;
+
+        $characters = array_merge(range(0, 9), range('a', 'z'), range('A', 'Z'), ['-', '_']);
+
+        $length = count($characters);
+
+        $name = '';
+
+        for ($i = 0; $i < $nameLength; $i++) {
+
+            $name .= $characters[random_int(0, $length - 1)];
+
+        }
+
+        return $name;
+    }
 }

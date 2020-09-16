@@ -6,6 +6,7 @@ import store from './store'
 import Login from './pages/auth/Login.vue'
 import Register from './pages/auth/Register.vue'
 import EditUsername from './pages/auth/EditUsername.vue'
+import EditUserimage from './pages/auth/EditUserimage.vue'
 import EditPassword from './pages/auth/EditPassword.vue'
 import Delete from './pages/auth/Delete.vue'
 
@@ -90,6 +91,13 @@ export default new VueRouter({
       beforeEnter(to, from, next) {
         redirectIfGuest(next)
       },
+    },
+    {
+      path: '/edit/userimage',
+      component: EditUserimage,
+      beforeEnter(to, from, next) {
+        redirectIfGuest(next)
+      }
     },
     {
       path: '/edit/password',

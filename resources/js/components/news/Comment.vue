@@ -10,7 +10,7 @@
         <pre class="comment-content">{{ item.content }}</pre>
       </div>
     </div>
-    <div class="d-flex px-3 py-2">
+    <div class="d-flex py-2" style="margin-left: 56px">
       <span @click="onFavorite" :class="{'active': item.is_favorite}" class="cursor good-icon mr-1"></span>
       <span class="align-self-center comment-footer-item mr-2">{{ item.favorite_count }}</span>
       <span

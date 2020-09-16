@@ -69,6 +69,12 @@
           </div>
           <span>ユーザー名変更</span>
         </router-link>
+        <router-link to="/edit/userimage" class="list-group-item list-group-item-action rounded-0 icon-list">
+          <div class="list-group-icon-box settings-icon-box">
+            <span class="list-group-icon userimage-icon"></span>
+          </div>
+          <span>画像変更</span>
+        </router-link>
         <router-link to="/edit/password" class="list-group-item list-group-item-action rounded-0 icon-list">
           <div class="list-group-icon-box settings-icon-box">
             <span class="list-group-icon password-icon"></span>

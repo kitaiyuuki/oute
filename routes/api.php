@@ -42,6 +42,7 @@ Route::post('/competition/{id}/favorite', 'CompetitionController@favorite')->mid
 Route::delete('/competition/{id}/favorite', 'CompetitionController@notFavorite')->middleware('auth')->name('competition.notFavorite');
 
 Route::get('/user', 'UserController@user')->name('user');
+Route::post('/user/edit/image', 'UserController@editImage')->middleware('auth')->name('user.editImage');
 Route::put('/user/edit/name', 'UserController@editName')->middleware('auth')->name('user.editName');
 Route::put('/user/edit/password', 'UserController@editPassword')->middleware('auth')->name('user.editPassword');
 Route::delete('/user/delete', 'UserController@delete')->middleware('auth')->name('user.delete');
