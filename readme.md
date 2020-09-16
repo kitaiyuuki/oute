@@ -2,8 +2,9 @@
 
 将棋のニュースサイト（ポートフォリオ用）
 
-![サイトの画像](./readme_image.jpg)
-![サイトの画像2](./readme_image2.jpg)
+![サイトの画像1](./readme_image/readme_image1.jpg)
+![サイトの画像2](./readme_image/readme_image2.jpg)
+![サイトの画像3](./readme_image/readme_image3.jpg)
 
 ## 概要
 
