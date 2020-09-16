@@ -37,7 +37,7 @@ Laravel、Vue.js、bootstrap
 
 ## git clone後の設定
 
-1. .envファイル作成（env.exampleに例を記述しておきました。）<br>
+1. .envファイル作成<br>
 2. composer install<br>
 3. npm install<br>
 4. php artisan storage:link<br>
