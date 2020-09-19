@@ -32,15 +32,3 @@ Laravel、Vue.js、bootstrap
 ## 未実装
 
 -対局日程
-
-## git clone後の設定
-
-1. .envファイル作成<br>
-2. composer install<br>
-3. npm install<br>
-4. php artisan storage:link<br>
-5. データベース作成（MySQL以外のデータベースではmigrationが通らない可能性があります。）<br>
-6. php artisan migrate<br>
-7. php artisan db:seed<br>
-8. npm run dev
-9. php artisan serve
